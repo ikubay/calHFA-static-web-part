@@ -11,25 +11,20 @@ namespace CalHFA_API.Controllers
     [Route("api/[controller]")]
     public class DataController : Controller
     {
-
-        [HttpGet]
-        public string Index()
+        // api/data/getLoans
+        [HttpGet("getLoans")]
+        public ActionResult getLoans()
         {
-            return "This is the index";
-        }
+            // Example return
+            Loans l = new()
+            {
+                ComplianceReviewCount = 1,
+                ComplianceReviewSuspenseCount = 2,
+                PurchaseReviewCount = 3,
+                PurchaseReviewSuspenseCount = 4
+            };
 
-        // GET: api/data/*string to put
-        [HttpGet("{str}")]
-        public string GetString(string str)
-        {
-            return str;
-        }
-
-        // GET: api/data/Details/5
-        [HttpGet("details/{id}")]
-        public int Details(int id)
-        {
-            return id;
+            return Ok(l);
         }
     }
 }
